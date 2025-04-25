@@ -3,9 +3,6 @@ import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.m
 import { gfmHeadingId } from 'https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/+esm';
 import markedAlert from 'https://cdn.jsdelivr.net/npm/marked-alert/+esm'
 import markedFootnote from 'https://cdn.jsdelivr.net/npm/marked-footnote/+esm'
-// import { markedHighlight } from 'https://cdn.jsdelivr.net/npm/marked-highlight/+esm'
-// import highlightJs from 'https://cdn.jsdelivr.net/npm/highlight.js/+esm'
-
 
 const loadStyle = (href) => {
     return new Promise((resolve, reject) => {
@@ -18,33 +15,9 @@ const loadStyle = (href) => {
     });
 };
 
-const ghThemeLink = (theme) => {
-    switch (theme) {
-        case 'dark':
-            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-dark.min.css';
-        // case 'light':
-        //     return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css';
-        default:
-            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css';
-            // return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css';
-    }
-}
-
-const mermaidTheme = (theme) => {
-    switch (theme) {
-        case 'dark':
-            return 'dark';
-        default:
-            return 'default';
-    }
-}
-
 const md = document.getElementById('md-doc');
-if (md.dataset.theme === 'dark') {
-    document.body.style.backgroundColor = 'black';
-}
-md.style.visibility = 'hidden';
 
+md.style.visibility = 'hidden';
 md.className = 'markdown-body';
 
 marked.use({
@@ -57,29 +30,18 @@ marked.use(gfmHeadingId({
 }))
 
 marked.use(markedFootnote());
-
-// marked.use(markedHighlight({
-//     emptyLangClass: 'hljs',
-//     langPrefix: 'hljs language-',
-//     highlight(code, lang, info) {
-//         const language = highlightJs.getLanguage(lang) ? lang : 'plaintext';
-//         return highlightJs.highlight(code, { language }).value;
-//     }
-// }))
-
 marked.use(markedAlert());
 
 
+var text = md.getElementsByTagName('template')[0];
 await Promise.all([
-    loadStyle(ghThemeLink(md.dataset.theme)),
+    loadStyle('https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css'),
     loadStyle('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css'),
-    marked.parse(md.textContent).then(html => {md.innerHTML = html;}),
+    marked.parse(text).then(html => {md.innerHTML = html;}),
 ]);
-
 
 mermaid.initialize({
     startOnLoad: false,
-    theme: mermaidTheme(md.dataset.theme),
 });
 await mermaid.run({
     querySelector: 'code.language-mermaid',
