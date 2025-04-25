@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<script type="module" src="https://cdn.jsdelivr.net/gh/adamijak/md-doc/md-doc.js"></script>
+<main id="md-doc">
+Loading...
+In case of any incovenience, please contact the author.
+<template>
+# md-doc documentation
+
+## Table of contents
+- [About](#md-doc-about)
+- [Installation](#md-doc-installation)
+- [Code](#md-doc-code)
+- [Diagrams](#md-doc-diagrams)
+- [Images](#md-doc-images)
+- [Footnotes](#md-doc-footnotes)
+- [Tables](#md-doc-tables)
+- [Alerts](#md-doc-alerts)
+- [Section links](#md-doc-section-links)
+
+## About
+md-doc is a tool for simple documentation.  
+Its goal is to behave like a native self-contained format,
+with the option to edit without compile step.
+
+## Installation
+md-doc only requires modern browser and internet connection for initial load.  
+You can continue working even offline since the browser caches the files.
+
+## Code
+
+Use markdown backtics with language identifier ```js 
+  
+```js
+console.log("Hello world!");
+```
+
+## Diagrams
+md-doc supports mermaid diagrams.
+  
+```mermaid
+classDiagram
+    Customer "1" --> "*" Ticket
+    Student "1" --> "1..*" Course
+    Galaxy --> "many" Star : Contains
+```
+
+## Images
+You can embed images usign base64 encoding.
+![image](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG8AAAAtCAMAAACXi8U1AAAAPFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQLyYwAAAAFHRSTlMA/wYQHi6o9ppt3uvMuXs6i1FfRQcUX/QAAAJpSURBVHic7VbZspggDCWsgogs//+vjUqwXtG71E6nM54nRyAny0mAsRcvXrz4t5jDfLcsoxWP8jkY7pYTgHqUT8N0z2fko3wW3N1yBvdsPst9ABY8f5RPAVwIhgtkiuAfJONiEUzq+qENjJGF+/J+C0qPxhcNobOWAcAZ8Ppevt9BNQk9iwXAK8YzLsf2k89l/rl4sHBacZlcJ2PcV5nIcY/eusXBXjIuKWza/fOVp6d49KXQrlz/aSTTE8D0Vb0K3AwjibHpstAESdbaMKziCeA2q2IkNQWAgP9m81uC7+HBIeNYg8n0RcR8KWUtZhs6krySVEh077OBI8LkAxKEdXctgKU0YghbymywOSe18emWhc16hLG5vZdQqg63WOoM0+Y5nuPH+NDAKUMtvsa3j/XmC0seU+IP3StiYMiUB0qkJCW0srGhGWiw5FWpx1oSGJrTdA7ZHBy8RfMB7LpYw/F1u2iFD+eRhWHZanMTjjQkWIx0OxeXfmIiHQWEKtb1wOZgBiPIPVlXzEnieMxKoVBfmy+86ZTkNdOcmA98TU5UEoxrO4k8rqx1HM9XqvAAxoEZqJCtaroKR1PLsGP3mpoZvKjF8ST+ASy4EdEUdoL1Zhy4JJlgWKubtmZaUMY/YqCMEHFLKJsxXWaQTPSH4nIdcUlrWK5YylIeXp3tt+FMOiRiCXsDCfn1+RvWcUDFunwWcOrPRjy53N/6CWTQU6RxmKljTqAbWpCQ+RMPBHn5LFAU166oJzBdPqQorqI7Mvwx8GZ0Sah8DiE0QT4K5Vf9nLN6/QL7Q6TBT/HcFbz8jfBevPif8AtbKhKMRbbhrwAAAABJRU5ErkJggg==)
+
+```md
+![image](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG8AAAAtCAMAAACXi8U1AAAAPFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQLyYwAAAAFHRSTlMA/wYQHi6o9ppt3uvMuXs6i1FfRQcUX/QAAAJpSURBVHic7VbZspggDCWsgogs//+vjUqwXtG71E6nM54nRyAny0mAsRcvXrz4t5jDfLcsoxWP8jkY7pYTgHqUT8N0z2fko3wW3N1yBvdsPst9ABY8f5RPAVwIhgtkiuAfJONiEUzq+qENjJGF+/J+C0qPxhcNobOWAcAZ8Ppevt9BNQk9iwXAK8YzLsf2k89l/rl4sHBacZlcJ2PcV5nIcY/eusXBXjIuKWza/fOVp6d49KXQrlz/aSTTE8D0Vb0K3AwjibHpstAESdbaMKziCeA2q2IkNQWAgP9m81uC7+HBIeNYg8n0RcR8KWUtZhs6krySVEh077OBI8LkAxKEdXctgKU0YghbymywOSe18emWhc16hLG5vZdQqg63WOoM0+Y5nuPH+NDAKUMtvsa3j/XmC0seU+IP3StiYMiUB0qkJCW0srGhGWiw5FWpx1oSGJrTdA7ZHBy8RfMB7LpYw/F1u2iFD+eRhWHZanMTjjQkWIx0OxeXfmIiHQWEKtb1wOZgBiPIPVlXzEnieMxKoVBfmy+86ZTkNdOcmA98TU5UEoxrO4k8rqx1HM9XqvAAxoEZqJCtaroKR1PLsGP3mpoZvKjF8ST+ASy4EdEUdoL1Zhy4JJlgWKubtmZaUMY/YqCMEHFLKJsxXWaQTPSH4nIdcUlrWK5YylIeXp3tt+FMOiRiCXsDCfn1+RvWcUDFunwWcOrPRjy53N/6CWTQU6RxmKljTqAbWpCQ+RMPBHn5LFAU166oJzBdPqQorqI7Mvwx8GZ0Sah8DiE0QT4K5Vf9nLN6/QL7Q6TBT/HcFbz8jfBevPif8AtbKhKMRbbhrwAAAABJRU5ErkJggg==)
+```
+
+## Footnotes
+
+You can use footnote[^1]
+
+[^1]: This is a footnote.
+
+```
+footnote[^1]
+
+[^1]: This is a footnote.
+```
+
+## Tables
+
+|Cats|Dogs|
+|-|-|
+|3|2|
+
+```md
+|Cats|Dogs|
+|-|-|
+|3|2|
+```
+
+## Alerts
+
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
+
+> [!CAUTION]
+> Negative potential consequences of an action.
+
+```
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
+
+> [!CAUTION]
+> Negative potential consequences of an action.
+```
+
+## Section links
+Link ganarates from two parts `md-doc-` prefix and the header name.  
+[Link to My Header](#md-doc-md-doc-documentation)
+
+```md
+[Link to My Header](#md-doc-md-doc-documentation)
+```
+
+
+</template>
+</main>
