@@ -29,13 +29,22 @@ const ghThemeLink = (theme) => {
     }
 }
 
+const mermaidTheme = (theme) => {
+    switch (theme) {
+        case 'dark':
+            return 'dark';
+        default:
+            return 'base';
+    }
+}
+
 const md = document.getElementById('md-doc');
 md.style.visibility = 'hidden';
 md.className = 'markdown-body';
 
 marked.use({
     async: true,
-    gfm: true
+    gfm: true,
 })
 
 marked.use(gfmHeadingId({
@@ -66,6 +75,7 @@ await Promise.all([
 mermaid.initialize({ startOnLoad: false });
 await mermaid.run({
     querySelector: 'code.language-mermaid',
+    theme: mermaidTheme(md.dataset.theme),
 });
 
 md.style.visibility = 'visible';
