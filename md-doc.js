@@ -36,7 +36,6 @@ marked.use(markedAlert());
 var text = md.getElementsByTagName('template')[0];
 await Promise.all([
     loadStyle('https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css'),
-    loadStyle('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css'),
     marked.parse(text).then(html => {md.innerHTML = html;}),
 ]);
 
