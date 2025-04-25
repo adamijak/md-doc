@@ -22,10 +22,11 @@ const ghThemeLink = (theme) => {
     switch (theme) {
         case 'dark':
             return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-dark.min.css';
-        case 'light':
-            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css';
+        // case 'light':
+        //     return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css';
         default:
-            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css';
+            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css';
+            // return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css';
     }
 }
 
@@ -34,7 +35,7 @@ const mermaidTheme = (theme) => {
         case 'dark':
             return 'dark';
         default:
-            return 'base';
+            return 'default';
     }
 }
 
@@ -72,10 +73,12 @@ await Promise.all([
 ]);
 
 
-mermaid.initialize({ startOnLoad: false });
+mermaid.initialize({
+    startOnLoad: false,
+    theme: mermaidTheme(md.dataset.theme),
+});
 await mermaid.run({
     querySelector: 'code.language-mermaid',
-    theme: mermaidTheme(md.dataset.theme),
 });
 
 md.style.visibility = 'visible';
