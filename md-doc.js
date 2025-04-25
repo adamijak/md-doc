@@ -18,6 +18,8 @@ const loadStyle = (href) => {
 const md = document.getElementById('md-doc');
 
 md.style.visibility = 'hidden';
+md.style.maxWidth = '800px';
+md.style.marginInline = 'auto';
 md.className = 'markdown-body';
 
 marked.use({
