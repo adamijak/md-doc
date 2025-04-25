@@ -32,8 +32,11 @@ marked.use(gfmHeadingId({
 marked.use(markedFootnote());
 marked.use(markedAlert());
 
+let text = [...md.getElementsByTagName('template')]
+    .map(v => v.content.textContent)
+    .join('\n');
+text = text.length == 0 ? md.textContent : text;
 
-var text = md.getElementsByTagName('template')[0];
 await Promise.all([
     loadStyle('https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css'),
     marked.parse(text).then(html => {md.innerHTML = html;}),
@@ -45,5 +48,4 @@ mermaid.initialize({
 await mermaid.run({
     querySelector: 'code.language-mermaid',
 });
-
 md.style.visibility = 'visible';
