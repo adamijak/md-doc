@@ -1,5 +1,5 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.min.js';
-import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
 import { gfmHeadingId } from 'https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/+esm';
 import markedAlert from 'https://cdn.jsdelivr.net/npm/marked-alert/+esm'
 import markedFootnote from 'https://cdn.jsdelivr.net/npm/marked-footnote/+esm'
@@ -40,7 +40,11 @@ const mermaidTheme = (theme) => {
 }
 
 const md = document.getElementById('md-doc');
+if (md.dataset.theme === 'dark') {
+    document.body.style.backgroundColor = 'black';
+}
 md.style.visibility = 'hidden';
+
 md.className = 'markdown-body';
 
 marked.use({
