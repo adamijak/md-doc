@@ -1,14 +1,11 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.min.js';
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+import { gfmHeadingId } from 'https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/+esm';
+import markedAlert from 'https://cdn.jsdelivr.net/npm/marked-alert/+esm'
+import markedFootnote from 'https://cdn.jsdelivr.net/npm/marked-footnote/+esm'
+// import { markedHighlight } from 'https://cdn.jsdelivr.net/npm/marked-highlight/+esm'
+// import highlightJs from 'https://cdn.jsdelivr.net/npm/highlight.js/+esm'
 
-const loadScript = (src) => {
-    return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-    });
-};
 
 const loadStyle = (href) => {
     return new Promise((resolve, reject) => {
@@ -21,32 +18,54 @@ const loadStyle = (href) => {
     });
 };
 
-class MdDoc extends HTMLElement {
-    async connectedCallback() {
-        this.hidden = true;
-        await Promise.all([
-            loadScript('https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.min.js'),
-            loadScript('https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/lib/index.umd.min.js'),
-            // loadScript('https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.min.js'),
-            loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'),
-            loadStyle('https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css'),
-        ]);
-
-        marked.use({
-            gfm: true,
-            safe: false
-        });
-        marked.use(markedGfmHeadingId.gfmHeadingId({ prefix: 'md-doc-', }));
-        // marked.use(markedHighlight.markedHighlight({}));
-
-        this.innerHTML = marked.parse(this.textContent);
-        this.className = 'markdown-body';
-
-        this.querySelectorAll('code.language-mermaid').forEach(block => {
-            block.className = 'mermaid';
-        });
-        this.hidden = false;
+const ghThemeLink = (theme) => {
+    switch (theme) {
+        case 'dark':
+            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-dark.min.css';
+        case 'light':
+            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.min.css';
+        default:
+            return 'https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css';
     }
 }
 
-customElements.define('md-doc', MdDoc);
+const md = document.getElementById('md-doc');
+md.style.visibility = 'hidden';
+md.className = 'markdown-body';
+
+marked.use({
+    async: true,
+    gfm: true
+})
+
+marked.use(gfmHeadingId({
+    prefix: 'md-doc-',
+}))
+
+marked.use(markedFootnote());
+
+// marked.use(markedHighlight({
+//     emptyLangClass: 'hljs',
+//     langPrefix: 'hljs language-',
+//     highlight(code, lang, info) {
+//         const language = highlightJs.getLanguage(lang) ? lang : 'plaintext';
+//         return highlightJs.highlight(code, { language }).value;
+//     }
+// }))
+
+marked.use(markedAlert());
+
+
+await Promise.all([
+    loadStyle(ghThemeLink(md.dataset.theme)),
+    loadStyle('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css'),
+    marked.parse(md.textContent).then(html => {md.innerHTML = html;}),
+]);
+
+
+mermaid.initialize({ startOnLoad: false });
+await mermaid.run({
+    querySelector: 'code.language-mermaid',
+});
+
+md.style.visibility = 'visible';
