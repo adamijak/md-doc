@@ -49,5 +49,6 @@ mermaid.initialize({
 });
 await mermaid.run({
     querySelector: 'code.language-mermaid',
+    suppressErrors: true
 });
 md.style.visibility = 'visible';

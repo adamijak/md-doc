@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<script type="module" src="https://cdn.jsdelivr.net/gh/adamijak/md-doc/md-doc.js"></script>
+<script type="module" src="./md-doc.js"></script>
 <main id="md-doc">
 This file relies on javascript to render the content.
 Please download the file and open it directly in your browser.
@@ -36,12 +36,31 @@ console.log("Hello world!");
 
 ## Diagrams
 md-doc supports mermaid diagrams.
-  
+
+```md
+classDiagram
+    Customer "1" --> "*" Ticket
+    Student "1" --> "1..*" Course
+    Galaxy --> "many" Star : Contains
+```
+
 ```mermaid
 classDiagram
     Customer "1" --> "*" Ticket
     Student "1" --> "1..*" Course
     Galaxy --> "many" Star : Contains
+```
+
+Syntax errors are dispalyed as-well.
+
+```md
+classDiagram
+    Customer --@$@$@ Ticket
+```
+
+```mermaid
+classDiagram
+    Customer --@@@ Ticket
 ```
 
 ## Images
