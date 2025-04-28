@@ -34,8 +34,8 @@ marked.use(gfmHeadingId({
 marked.use(markedFootnote());
 marked.use(markedAlert());
 
-let text = [...md.getElementsByTagName('template')]
-    .map(v => v.content.textContent)
+let text = [...md.getElementsByTagName('script')]
+    .map(v => v.textContent)
     .join('\n');
 text = text.length == 0 ? md.textContent : text;
 
