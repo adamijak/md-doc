@@ -51,4 +51,8 @@ await mermaid.run({
     querySelector: 'code.language-mermaid',
     suppressErrors: true
 });
+
+if (md.dataset.section !== undefined) {
+    window.location.hash = md.dataset.section;
+}
 md.style.visibility = 'visible';
