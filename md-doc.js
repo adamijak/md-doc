@@ -28,7 +28,7 @@ marked.use({
 })
 
 marked.use(gfmHeadingId({
-    prefix: 'md-doc-',
+    // prefix: 'md-doc-',
 }))
 
 marked.use(markedFootnote());
@@ -53,6 +53,7 @@ await mermaid.run({
 });
 
 if (md.dataset.section !== undefined) {
+    window.location.hash = "";
     window.location.hash = md.dataset.section;
 }
 md.style.visibility = 'visible';
