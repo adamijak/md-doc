@@ -1,5 +1,5 @@
-import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.min.js';
-import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked/+esm';
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
 import { gfmHeadingId } from 'https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/+esm';
 import markedAlert from 'https://cdn.jsdelivr.net/npm/marked-alert/+esm'
 import markedFootnote from 'https://cdn.jsdelivr.net/npm/marked-footnote/+esm'
