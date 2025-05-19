@@ -46,10 +46,12 @@
   },
   "devDependencies": {
     "github-markdown-css": "^5.8.1",
+    "highlight.js": "^11.11.1",
     "marked": "^15.0.11",
     "marked-alert": "^2.1.2",
     "marked-footnote": "^1.2.4",
     "marked-gfm-heading-id": "^4.1.1",
+    "marked-highlight": "^2.2.1",
     "mermaid": "^11.6.0",
     "vsce": "^2.15.0"
   },

@@ -4,6 +4,8 @@ import { gfmHeadingId } from 'marked-gfm-heading-id';
 import markedAlert from 'marked-alert'
 import markedFootnote from 'marked-footnote'
 import { loadConfig } from "./config.js";
+import { markedHighlight } from "marked-highlight";
+import hljs from 'highlight.js';
 
 import htmlTemplate from "../dist/bundle.html" with { type: "text" };
 
@@ -19,6 +21,12 @@ marked.use({
 marked.use(gfmHeadingId())
 marked.use(markedFootnote());
 marked.use(markedAlert());
+marked.use(markedHighlight({
+    highlight(code, lang, info) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    }
+}));
 
 export async function compile(doc) {
     let config;
