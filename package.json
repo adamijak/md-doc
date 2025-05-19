@@ -2,7 +2,7 @@
   "name": "md-doc",
   "displayName": "Markdown Documentation",
   "description": "Compile Markdown files to self-contained HTML documentation",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "adamijak",
   "private": false,
   "license": "MIT",
