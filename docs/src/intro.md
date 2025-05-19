@@ -1,20 +1,19 @@
 # md-doc documentation
 
 ## Table of contents
-- [About](#md-doc-about)
-- [Installation](#md-doc-installation)
-- [Code](#md-doc-code)
-- [Diagrams](#md-doc-diagrams)
-- [Images](#md-doc-images)
-- [Footnotes](#md-doc-footnotes)
-- [Tables](#md-doc-tables)
-- [Alerts](#md-doc-alerts)
-- [Section links](#md-doc-section-links)
+- [About](#about)
+- [Installation](#installation)
+- [Code](#code)
+- [Diagrams](#diagrams)
+- [Images](#images)
+- [Footnotes](#footnotes)
+- [Tables](#tables)
+- [Alerts](#alerts)
+- [Section links](#section-links)
 
 ## About
-md-doc is a tool for simple documentation.  
-Its goal is to behave like a native self-contained format,
-with the option to edit without compile step.
+md-doc is a VSCode extension for Markdown compilation to self-contained HTML file.
+It's main usage is for creation of design documents or documentaion.
 
 ## Installation
 md-doc only requires modern browser and internet connection for initial load.  
