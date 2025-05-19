@@ -1,0 +1,13 @@
+{
+    "title": "md-doc",
+    "files": [
+        "./src/intro.md",
+        "./src/diagrams.md",
+        "./src/code.md",
+        "./src/alerts.md",
+        "./src/footnotes.md",
+        "./src/tables.md",
+        "./src/images.md",
+        "./src/section-links.md"
+    ]
+}

@@ -1,0 +1,60 @@
+{
+  "name": "md-doc",
+  "displayName": "Markdown Documentation",
+  "description": "Compile Markdown files to self-contained HTML documentation",
+  "version": "0.0.4",
+  "publisher": "adamijak",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamijak/md-doc"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "tags": [
+    "Markdown",
+    "Documentation",
+    "HTML",
+    "Compiler"
+  ],
+  "type": "module",
+  "main": "./dist/extension.js",
+  "files": [
+    "dist/extension.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/md-doc.json"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "md-doc.start",
+        "title": "Markdown Documentation: Start"
+      },
+      {
+        "command": "md-doc.stop",
+        "title": "Markdown Documentation: Stop"
+      }
+    ]
+  },
+  "devDependencies": {
+    "github-markdown-css": "^5.8.1",
+    "marked": "^15.0.11",
+    "marked-alert": "^2.1.2",
+    "marked-footnote": "^1.2.4",
+    "marked-gfm-heading-id": "^4.1.1",
+    "mermaid": "^11.6.0",
+    "vsce": "^2.15.0"
+  },
+  "scripts": {
+    "build": "bun run build.js",
+    "package": "bun run build && vsce package"
+  }
+}
