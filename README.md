@@ -1,5 +1,6 @@
 # md-doc
-md-doc is a tool for writing self-contained HTML documentation.  
+md-doc is a VSCode extension for Markdown compilation to self-contained HTML file.
+It's main usage is for creation of design documents or documentaion.
 
 ## Quick-start
 1. First download [md-doc](https://marketplace.visualstudio.com/items?itemName=adamijak.md-doc) VSCode extension.
